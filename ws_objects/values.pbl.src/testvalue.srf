@@ -1,0 +1,17 @@
+﻿$PBExportHeader$testvalue.srf
+global type TestValue from function_object
+end type
+
+forward prototypes
+global subroutine testvalue ()
+end prototypes
+
+global subroutine testvalue ();
+
+
+
+
+
+
+end subroutine
+

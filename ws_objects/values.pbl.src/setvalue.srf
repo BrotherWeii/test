@@ -1,0 +1,19 @@
+﻿$PBExportHeader$setvalue.srf
+global type setvalue from function_object
+end type
+
+forward prototypes
+global subroutine setvalue ()
+end prototypes
+
+global subroutine setvalue ();// 1.int 
+//Integer		li_3 = 32768
+//setnull(li_3)
+
+// 2.bool
+//Boolean			lbl_2	=	True
+//setnull(lbl_2)
+
+
+end subroutine
+
