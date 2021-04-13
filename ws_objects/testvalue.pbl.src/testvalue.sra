@@ -11,7 +11,7 @@ global message message
 end forward
 
 global variables
-
+int g_indata
 end variables
 
 global type testvalue from application
@@ -27,6 +27,12 @@ string richtexteditkey = ""
 string appicon = ""
 end type
 global testvalue testvalue
+
+type variables
+//int instance_array[3] = {1,2,3}
+string strInstanceArray[3] = {"122", "1233", "12345"}
+int i_instance = 1;
+end variables
 
 on testvalue.create
 appname="testvalue"
@@ -65,8 +71,29 @@ event open;Integer		li_1
 //l2 = 2
 //l3 = 3
 //l4 = 4;
+constant string LS_HOMECITY = "Boston"
+constant real LR_PI = 3.14159265
 
-open(w_001)
+//LS_HOMECITY = "hello world!"
+
+any arry[5] = {"test01", "test02", "test003"}
+
+str m_str[]
+m_str[1].array[1] = "test01"
+m_str[1].array[2] = "test02"
+m_str[1].array[3] = "test003"
+m_str[2].array[1] = "test1111"
+m_str[2].array[2] = "test2222"
+int sum, sumRef, sumReadOnly
+
+i_instance = 2;
+strInstanceArray[1] = "local01";
+
+//sum = add(1,5)
+//sumRef = addref(1,5)
+//sumreadonly = addreadonly(1,5)
+
+openwithparm(w_001, "无敌的寂寞!")
 
 end event
 

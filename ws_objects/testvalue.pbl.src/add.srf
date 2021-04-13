@@ -1,0 +1,11 @@
+﻿$PBExportHeader$add.srf
+global type Add from function_object
+end type
+
+forward prototypes
+global function integer add (integer a, integer b)
+end prototypes
+
+global function integer add (integer a, integer b);return a+b
+end function
+

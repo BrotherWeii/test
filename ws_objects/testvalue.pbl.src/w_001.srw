@@ -2,6 +2,14 @@
 forward
 global type w_001 from window
 end type
+type cb_8 from commandbutton within w_001
+end type
+type cb_7 from commandbutton within w_001
+end type
+type dw_1 from datawindow within w_001
+end type
+type sle_1 from singlelineedit within w_001
+end type
 type cb_6 from commandbutton within w_001
 end type
 type rb_1 from radiobutton within w_001
@@ -30,6 +38,10 @@ boolean resizable = true
 long backcolor = 67108864
 string icon = "AppIcon!"
 boolean center = true
+cb_8 cb_8
+cb_7 cb_7
+dw_1 dw_1
+sle_1 sle_1
 cb_6 cb_6
 rb_1 rb_1
 cb_5 cb_5
@@ -41,6 +53,10 @@ end type
 global w_001 w_001
 
 on w_001.create
+this.cb_8=create cb_8
+this.cb_7=create cb_7
+this.dw_1=create dw_1
+this.sle_1=create sle_1
 this.cb_6=create cb_6
 this.rb_1=create rb_1
 this.cb_5=create cb_5
@@ -48,7 +64,11 @@ this.cb_4=create cb_4
 this.cb_3=create cb_3
 this.cb_2=create cb_2
 this.cb_1=create cb_1
-this.Control[]={this.cb_6,&
+this.Control[]={this.cb_8,&
+this.cb_7,&
+this.dw_1,&
+this.sle_1,&
+this.cb_6,&
 this.rb_1,&
 this.cb_5,&
 this.cb_4,&
@@ -58,6 +78,10 @@ this.cb_1}
 end on
 
 on w_001.destroy
+destroy(this.cb_8)
+destroy(this.cb_7)
+destroy(this.dw_1)
+destroy(this.sle_1)
 destroy(this.cb_6)
 destroy(this.rb_1)
 destroy(this.cb_5)
@@ -66,6 +90,95 @@ destroy(this.cb_3)
 destroy(this.cb_2)
 destroy(this.cb_1)
 end on
+
+event open;sle_1.Text = message.stringparm
+
+uo_add u_add1
+u_add1 = create uo_add
+
+end event
+
+type cb_8 from commandbutton within w_001
+integer x = 3269
+integer y = 980
+integer width = 457
+integer height = 132
+integer taborder = 50
+integer textsize = -12
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "Tahoma"
+string text = "Connect"
+end type
+
+event clicked;//tran_SQLCA = create transaction
+//testname = "ODBC_ASA"
+// Profile PB Demo DB V2019R3
+SQLCA.DBMS = "ODBC"
+SQLCA.AutoCommit = False
+SQLCA.DBParm = "ConnectString='DSN=PB Demo DB V2019R3;UID=dba;PWD=sql',DelimitIdentifier='No'"
+connect;
+
+If SQLCA.sqlcode<>0 Then
+	//ls_result = testname + " Connect To DB = "+ String ( "Success!" ) +"~r~n"
+	Messagebox("DB Connect",  "Failed!")
+Else
+	//ls_result = testname +" Connect To DB = "+ String ( "Fail!" ) +"~r~n"
+	Messagebox("DB Connect","Sucessed!")
+End If
+end event
+
+type cb_7 from commandbutton within w_001
+integer x = 3808
+integer y = 980
+integer width = 457
+integer height = 132
+integer taborder = 40
+integer textsize = -12
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "Tahoma"
+string text = "Retrive"
+end type
+
+event clicked;	dw_1.dataobject = "dw_ole02"
+	//dw_1.dataobject = "dw_self02"
+	dw_1.SetTransObject ( SQLCA )
+	dw_1.Retrieve()		
+end event
+
+type dw_1 from datawindow within w_001
+integer x = 1225
+integer y = 1112
+integer width = 3045
+integer height = 744
+integer taborder = 40
+string title = "none"
+string dataobject = "dw_ole01"
+boolean livescroll = true
+borderstyle borderstyle = stylelowered!
+end type
+
+type sle_1 from singlelineedit within w_001
+integer x = 1202
+integer y = 820
+integer width = 869
+integer height = 168
+integer taborder = 20
+integer textsize = -12
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "Tahoma"
+long textcolor = 33554432
+string text = "none"
+borderstyle borderstyle = stylelowered!
+end type
 
 type cb_6 from commandbutton within w_001
 integer x = 206

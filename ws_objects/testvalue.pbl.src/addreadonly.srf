@@ -1,0 +1,11 @@
+﻿$PBExportHeader$addreadonly.srf
+global type addReadOnly from function_object
+end type
+
+forward prototypes
+global function integer addreadonly (readonly integer a, readonly integer b)
+end prototypes
+
+global function integer addreadonly (readonly integer a, readonly integer b);return a + b
+end function
+
